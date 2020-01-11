@@ -10,7 +10,7 @@ class Usuarios_controller extends CI_Controller {
         parent::__construct(); 
         //$this->load->helper('helpers_helper');       
         $this->load->model('Tbl_usuarios_Model');
-        $this->load->model('Tbl_tarea_Model');
+       // $this->load->model('Tbl_tarea_Model');
           if(!$this->session->userdata('log')){
         	redirect('Home');
         }

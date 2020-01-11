@@ -12,7 +12,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
      <style> #Collapseregistrar {margin: 10px; }</style>
   	<div class="collapse" id="Collapseregistrar">
   	<div class="card-personalizada">
-		<form id="formBusquedaG" method="POST" action="<?=base_url();?>registrar/paciente">
+		<form id="formRegistroPaciente" method="POST" action="<?=base_url();?>registrar/paciente">
         	<div class="container">
 			<div class="row">
 				<div class="col-xs-3 col-md-3">
@@ -39,7 +39,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
 			    	</div> <!--form-group -->
 					<div class="form-group">
 						<label for="lbeps">Eps</label>
-						<input type="text" class="form-control" placeholder="eps" id="eps" name="apellidos" required></input>
+						<input type="text" class="form-control" placeholder="eps" id="eps" name="eps" required></input>
 					</div> <!-- form-group -->
 				</div>	<!-- col-xs-4 col-md-4 -->			
 				<div class="col-xs-3 col-md-3">														
@@ -104,7 +104,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
 					<center>
 						<button  type="submit" id="registrar" value="registrar" class="btn btn-primary btn-lg"> Guardar
 						</button>						
-						</center>
+					</center>
 				</div> <!-- col-xs-12 col-md-12 -->
 			</div>	 <!-- row --> 					
 			</div>    <!-- container--> 

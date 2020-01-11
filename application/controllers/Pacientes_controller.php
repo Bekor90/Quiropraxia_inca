@@ -22,24 +22,48 @@ class Pacientes_controller extends CI_Controller {
 	}
 	public function registrarPaciente()
 	{
-		$tituloform = $this->input->post('titulo', TRUE);
+		$nombreform = $this->input->post('nombre', TRUE);
+		$apellidosform = $this->input->post('apellidos', TRUE);
+		$edadform = $this->input->post('edad', TRUE);
+		$generoform = $this->input->post('genero', TRUE);
+		$epsform = $this->input->post('eps', TRUE);
+		$ocupacionform = $this->input->post('ocupacion', TRUE);
+		$escolaridadform = $this->input->post('escolaridad', TRUE);
+		$ciudadform = $this->input->post('ciudad', TRUE);
+		$municipioform = $this->input->post('municipio', TRUE);
+		$barrioform = $this->input->post('barrio', TRUE);
+		$direccionform = $this->input->post('direccion', TRUE);
+		$telefonoform = $this->input->post('telefono', TRUE);
+		$pesoform = $this->input->post('peso', TRUE);
+		$estaturaform = $this->input->post('estatura', TRUE);
+		$fecha_nacform = $this->input->post('fecha_nac', TRUE);
 		$descripcionform = $this->input->post('descripcion', TRUE);
-		$categoriaform = $this->input->post('categoria', TRUE);
+		$diagnosticoform = $this->input->post('diagnostico', TRUE);
+		$fecha_controlform = $this->input->post('fecha_control', TRUE);
 		$mensaje = array('titulo' => '', 'body' => '');
 		$id = $this->session->userdata("user_id");
 
-		if($tituloform && $descripcionform &&  $categoriaform){
-			$result = $this->Tbl_tarea_Model->saveTarea($tituloform, $descripcionform, $id, $categoriaform);
-			if ($result != FALSE){
+		if($nombreform && $apellidosform &&  $edadform && $generoform && $epsform &&
+		  $ocupacionform && $escolaridadform && $ciudadform && $municipioform && $barrioform &&
+		  $direccionform && $telefonoform && $pesoform && $estaturaform && $fecha_nacform && 
+		  $descripcionform && $diagnosticoform && $fecha_controlform){
+
+			$fecha_reg = date('d-m-Y');
+			$estado = true;
+
+		  $result = $this->Tbl_paciente_Model->savePaciente($nombreform, $apellidosform, $edadform, $generoform,
+		  $epsform, $ocupacionform, $escolaridadform, $ciudadform, $municipioform, $barrioform, $direccionform, 
+		  $telefonoform, $pesoform, $estaturaform, $fecha_nacform, $fecha_reg, $descripcionform, $diagnosticoform,
+		  $medicamento, $estado, $fecha_controlform);
+			if ($result){
 
 				//mostrar mensaje exitoso
 				//limpiar formulario*/
-				$mensaje = array('titulo' => 'Tarea', 'body' => 'Registro satisfactorio');
+				$mensaje = array('titulo' => 'Paciente', 'body' => 'Registro satisfactorio');
 				redirect('Dashboard');
 				/*$this->load->view('dashboard/menu');
 				$this->load->view('errors/perzonalizado/mensajes', $mensaje);
-				$this->load->view('dashboard/cierredashboard');	*/
-				
+				$this->load->view('dashboard/cierredashboard');	*/				
 			}
 		}
 	}

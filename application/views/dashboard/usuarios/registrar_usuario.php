@@ -11,7 +11,7 @@
   	
   	<div class="collapse" id="Collapseregistrar">
   	<div class="card-personalizada">
-		<form id="formRegistrarUsuaio" method="POST" action="<?=base_url();?>registrar/usuario">
+		<form id="formRegistrarUsuario" method="POST" action="<?=base_url();?>registrar/usuario">
         	<div class="container">
 			<div class="row">
 			<div class="col-xs-4 col-md-4"></div>				
