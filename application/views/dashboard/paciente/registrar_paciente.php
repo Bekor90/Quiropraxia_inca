@@ -134,8 +134,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
 					<th class="info">Edad</th>	
 					<th class="info">Genero</th>	
 					<th class="info">EPS</th>
-					<th class="info">peso</th>
-					<th class="info">estatura</th>
+					<th class="info">Peso</th>
+					<th class="info">Estatura</th>
 					<th class="info">Diagnóstico</th>
 					<th class="info">Medicamento</th>
 					<th class="info">Editar</th>					
