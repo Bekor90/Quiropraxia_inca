@@ -24,6 +24,7 @@ class Pacientes_controller extends CI_Controller {
 	{
 		$nombreform = $this->input->post('nombre', TRUE);
 		$apellidosform = $this->input->post('apellidos', TRUE);
+		$cedulaform = $this->input->post('cedula', TRUE);
 		$edadform = $this->input->post('edad', TRUE);
 		$generoform = $this->input->post('genero', TRUE);
 		$epsform = $this->input->post('eps', TRUE);
@@ -40,31 +41,52 @@ class Pacientes_controller extends CI_Controller {
 		$descripcionform = $this->input->post('descripcion', TRUE);
 		$diagnosticoform = $this->input->post('diagnostico', TRUE);
 		$fecha_controlform = $this->input->post('fecha_control', TRUE);
+		$medicamentoform = $this->input->post('medicamento', TRUE);
 		$mensaje = array('titulo' => '', 'body' => '');
 		$id = $this->session->userdata("user_id");
 
-		if($nombreform && $apellidosform &&  $edadform && $generoform && $epsform &&
+		if($nombreform && $apellidosform && $cedulaform && $edadform && $generoform && $epsform &&
 		  $ocupacionform && $escolaridadform && $ciudadform && $municipioform && $barrioform &&
 		  $direccionform && $telefonoform && $pesoform && $estaturaform && $fecha_nacform && 
 		  $descripcionform && $diagnosticoform && $fecha_controlform){
 
-			$fecha_reg = date('d-m-Y');
-			$estado = true;
+		  $fecha_reg = date('Y-m-d');		
+		  $estado = 1;			
 
 		  $result = $this->Tbl_paciente_Model->savePaciente($nombreform, $apellidosform, $edadform, $generoform,
 		  $epsform, $ocupacionform, $escolaridadform, $ciudadform, $municipioform, $barrioform, $direccionform, 
 		  $telefonoform, $pesoform, $estaturaform, $fecha_nacform, $fecha_reg, $descripcionform, $diagnosticoform,
-		  $medicamento, $estado, $fecha_controlform);
+		  $medicamentoform, $estado, $fecha_controlform, $cedulaform);
 			if ($result){
 
-				//mostrar mensaje exitoso
-				//limpiar formulario*/
-				$mensaje = array('titulo' => 'Paciente', 'body' => 'Registro satisfactorio');
-				redirect('Dashboard');
-				/*$this->load->view('dashboard/menu');
-				$this->load->view('errors/perzonalizado/mensajes', $mensaje);
-				$this->load->view('dashboard/cierredashboard');	*/				
+				$user['nombre'] = '';
+				$data = array('result' => '', 
+						'error' => true, 
+						'mensaje' => 'Error al registrar el paciente',
+						'class' => 'alert alert-danger');
+				$this->load->view('dashboard/menu', $user);
+				$this->load->view('dashboard/paciente/registrar_paciente', $data);
+				$this->load->view('dashboard/cierredashboard');			
+			}else{
+				$user['nombre'] = '';
+				$data = array('result' => '', 
+						'error' => true, 
+						'mensaje' => 'Registro almacenado satisfactoriamente',
+						'class' => 'alert alert-success');
+				$this->load->view('dashboard/menu', $user);
+				$this->load->view('dashboard/paciente/registrar_paciente', $data);
+				$this->load->view('dashboard/cierredashboard');
 			}
+		}else{
+			$user['nombre'] = '';
+			$data = array('result' => '', 
+					'error' => true, 
+					'mensaje' => 'Error por campos',
+					'class' => 'alert alert-danger');
+			$this->load->view('dashboard/menu', $user);
+			$this->load->view('dashboard/paciente/registrar_paciente', $data);
+			$this->load->view('dashboard/cierredashboard');
+
 		}
 	}
 
@@ -73,37 +95,102 @@ class Pacientes_controller extends CI_Controller {
 		$data = array('result' => '');
 		if($id >= 0){
 			$result = $this->Tbl_paciente_Model->findByPaciente($id);
-			$data['result'] = $result;
+
+			if($result){
+
+				$user['nombre'] = '';
+				$data = array('result' => $result, 
+						'error' => true, 
+						'mensaje' => 'Error al cargar los datos del paciente',
+						'class' => 'alert alert-danger');
+				$this->load->view('dashboard/menu', $user);
+				$this->load->view('dashboard/paciente/editar_paciente', $data);
+				$this->load->view('dashboard/cierredashboard');		
+			
+			}else{
+				$data['result'] = $result;
 				$this->load->view('dashboard/menu');
 				$this->load->view('dashboard/paciente/editar_paciente', $data);
 				$this->load->view('dashboard/cierredashboard');	
+			}
 		}
 
 	}
 	public function actualizar()
 	{
 		$id =  $this->input->post('id', TRUE);
-		$tituloform = $this->input->post('edititulo', TRUE);
-		$descripcionform = $this->input->post('editdescrip', TRUE);
-		$id_usuario = $this->input->post('idusuario', TRUE);
-		$categoriaform = $this->input->post('categoria', TRUE);
+		$fecharegform =  $this->input->post('fecha_reg', TRUE);
+		$nombreform = $this->input->post('nombre', TRUE);
+		$apellidosform = $this->input->post('apellidos', TRUE);
+		$cedulaform = $this->input->post('cedula', TRUE);
+		$edadform = $this->input->post('edad', TRUE);
+		$generoform = $this->input->post('genero', TRUE);
+		$epsform = $this->input->post('eps', TRUE);
+		$ocupacionform = $this->input->post('ocupacion', TRUE);
+		$escolaridadform = $this->input->post('escolaridad', TRUE);
+		$ciudadform = $this->input->post('ciudad', TRUE);
+		$municipioform = $this->input->post('municipio', TRUE);
+		$barrioform = $this->input->post('barrio', TRUE);
+		$direccionform = $this->input->post('direccion', TRUE);
+		$telefonoform = $this->input->post('telefono', TRUE);
+		$pesoform = $this->input->post('peso', TRUE);
+		$estaturaform = $this->input->post('estatura', TRUE);
+		$fecha_nacform = $this->input->post('fecha_nac', TRUE);
+		$descripcionform = $this->input->post('descripcion', TRUE);
+		$diagnosticoform = $this->input->post('diagnostico', TRUE);
+		$fecha_controlform = $this->input->post('fecha_control', TRUE);
+		$medicamentoform = $this->input->post('medicamento', TRUE);
 
-		$data = array('id_tarea' =>$id,
-					'titulo' => $tituloform,
+		$data = array('id_paciente' =>$id,
+					'nombre' => $nombreform,
+					'apellidos' => $apellidosform,
+					'edad' => $edadform,
+					'genero' => $generoform,
+					'eps' => $epsform,
+					'ocupacion' => $ocupacionform,
+					'escolaridad' => $escolaridadform,
+					'ciudad' => $ciudadform,
+					'municipio' => $municipioform,
+					'barrio' => $barrioform,
+					'direccion' => $direccionform,
+					'telefono' => $telefonoform,
+					'peso' => $pesoform,
+					'estatura' => $estaturaform,
+					'fecha_nac' => $fecha_nacform,
+					'fecha_reg' => $fecharegform,
 					'descripcion' => $descripcionform,
-					'id_usuario' => $id_usuario,
-					'estado' => 'a',
-					'id_categoriat' => $categoriaform,);
+					'diagnostico' => $diagnosticoform,
+					'medicamento' => $medicamentoform,
+					'estado' => 1,
+					'fecha_control' => $fecha_controlform,
+					'cedula' => $cedulaform);
 
 
-		if($id && $tituloform && $descripcionform && $id_usuario  && $categoriaform){
-			$result = $this->Tbl_tarea_Model->updateTarea($data, $id);
-			if ($result != FALSE){
+		if($id && $nombreform && $apellidosform && $edadform && $generoform && $epsform &&
+			$ocupacionform && $escolaridadform && $ciudadform && $municipioform && $barrioform &&
+			$direccionform && $telefonoform && $pesoform && $estaturaform && $fecha_nacform &&
+			$fecharegform && $descripcionform && $diagnosticoform && $medicamentoform && $fecha_controlform &&
+			$cedulaform){
 
-				//mostrar mensaje exitoso
-				//limpiar formulario*/
-				$mensaje = array('titulo' => 'Usuario', 'body' => 'Registro satisfactorio');
-				redirect('Dashboard');
+			$result = $this->Tbl_paciente_Model->updatePaciente($data, $id);
+			if ($result){
+				$user['nombre'] = '';
+				$data = array('result' => '', 
+						'error' => true, 
+						'mensaje' => 'Registro actualizado satisfactoriamente',
+						'class' => 'alert alert-success');
+				$this->load->view('dashboard/menu', $user);
+				$this->load->view('dashboard/paciente/registrar_paciente', $data);
+				$this->load->view('dashboard/cierredashboard');
+			}else{
+				$user['nombre'] = '';
+				$data = array('result' => '', 
+						'error' => true, 
+						'mensaje' => 'Registro actualizado satisfactoriamente',
+						'class' => 'alert alert-danger');
+				$this->load->view('dashboard/menu', $user);
+				$this->load->view('dashboard/paciente/registrar_paciente', $data);
+				$this->load->view('dashboard/cierredashboard');
 			}
 		}	
 	}

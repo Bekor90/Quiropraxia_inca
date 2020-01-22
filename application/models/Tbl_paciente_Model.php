@@ -12,7 +12,7 @@ class Tbl_paciente_Model extends CI_model {
 	function savePaciente($nombre, $apellidos, $edad, $genero, $eps, $ocupacion, $escolaridad,
 						  $ciudad, $municipio, $barrio, $direccion, $telefono, $peso,
 						  $estatura, $fecha_nac, $fecha_reg, $descripcion, $diagnostico, $medicamento,
-						  $estado, $fecha_control)
+						  $estado, $fecha_control, $cedula)
 	{	
 		$datos = array(
 			'nombre' => $nombre,
@@ -35,7 +35,8 @@ class Tbl_paciente_Model extends CI_model {
 			'diagnostico' => $diagnostico,
 			'medicamento' => $medicamento,
 			'estado' => $estado,
-			'fecha_control' => $fecha_control
+			'fecha_control' => $fecha_control,
+			'cedula' => $cedula
 			);
 
 		$this->db->insert('paciente', $datos);	

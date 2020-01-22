@@ -25,6 +25,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
 						<input type="text" class="form-control" placeholder="apellidos" id="apellidos" name="apellidos" required></input>
 					</div> <!-- form-group -->
 					<div class="form-group">
+						<label for="lbcedula">Cédula</label>
+						<input type="number" class="form-control" id="cedula" name="cedula" required></input>
+					</div> <!-- form-group -->
+					<div class="form-group">
 						<label for="lbedad">Edad</label>
 						<input type="num" class="form-control"  id="edad" name="edad" required></input>
 					</div> <!-- form-group -->
@@ -40,7 +44,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
 					<div class="form-group">
 						<label for="lbeps">Eps</label>
 						<input type="text" class="form-control" placeholder="eps" id="eps" name="eps" required></input>
-					</div> <!-- form-group -->
+					</div> <!-- form-group -->					
 				</div>	<!-- col-xs-4 col-md-4 -->			
 				<div class="col-xs-3 col-md-3">														
 					<div class="form-group">
@@ -63,6 +67,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
 						<label for="lbbarrio">Barrio</label>
 						<input type="text" class="form-control" placeholder="barrio" id="barrio" name="barrio" required></input>
 					</div> <!-- form-group -->
+					<div class="form-group">
+						<label for="lbapellido">Medicamentos</label>
+						<input type="text" class="form-control" placeholder="medicamento" id="medicamento" name="medicamento" required></input>
+					</div> <!-- form-group -->	
 				</div> <!-- col-xs-4 col-md-4 -->
 				<div class="col-xs-3 col-md-3">
 					<div class="form-group">
@@ -89,11 +97,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
 				<div class="col-xs-3 col-md-3">
 					<div class="form-group">
 						<label for="lbdescripcion">Descripción </label>
-						<textarea id="descripcion" rows="4"></textarea>
+						<textarea id="descripcion" name="descripcion" rows="4"></textarea>
 					</div><!-- form-group -->
 					<div class="form-group">
 						<label for="lbdiagnostico">Diagnóstico </label>
-						<textarea id="diagnostico" rows="4"></textarea>
+						<textarea id="diagnostico" name="diagnostico" rows="4"></textarea>
 					</div><!-- form-group -->
 					<div class="form-group">
 						<label for="lbcontrol">Fecha control</label>
@@ -121,24 +129,36 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
 		    <table class="table table-bordered table-striped">	 <!-- mostrar tabla con resultados-->
 		    	<thead>
 					<th class="info">Id</th>
-					<th class="info">Título</th>
-					<th class="info">Descripción</th>
-					<th class="info">Categoria</th>					
+					<th class="info">Nombre</th>
+					<th class="info">Apellidos</th>
+					<th class="info">Edad</th>	
+					<th class="info">Genero</th>	
+					<th class="info">EPS</th>
+					<th class="info">peso</th>
+					<th class="info">estatura</th>
+					<th class="info">Diagnóstico</th>
+					<th class="info">Medicamento</th>
 					<th class="info">Editar</th>					
 					<th class="info">Eliminar</th>	
 				</thead>
 				<tbody>
 					<?php foreach($result as $row): ?>
 					<tr>
-						<td><?php echo $row->id_tarea ?></td>
-						<td><?php echo $row->titulo ?></td>
-						<td><?php echo $row->descripcion ?></td>
+						<td><?php echo $row->id_paciente ?></td>
 						<td><?php echo $row->nombre ?></td>
+						<td><?php echo $row->apellidos ?></td>
+						<td><?php echo $row->edad ?></td>
+						<td><?php echo $row->genero ?></td>
+						<td><?php echo $row->eps ?></td>
+						<td><?php echo $row->peso ?></td>
+						<td><?php echo $row->estatura ?></td>
+						<td><?php echo $row->diagnostico ?></td>
+						<td><?php echo $row->medicamento ?></td>
 						<td>
-							<a class="btn-outline-primary" href="<?php echo base_url().'editar/paciente/'.$row->id_tarea?>"><i class="fa fa-pencil-square-o"></i></a>
+							<a class="btn-outline-primary" href="<?php echo base_url().'editar/paciente/'.$row->id_paciente?>"><i class="fa fa-pencil-square-o"></i></a>
 						</td>
 						<td>
-						<a class="btn-outline-danger" href="<?php echo base_url().'eliminar/paciente/'.$row->id_tarea?>"><i class=" fa fa-trash"></i></a>		
+						<a class="btn-outline-danger" href="<?php echo base_url().'eliminar/paciente/'.$row->id_paciente?>"><i class=" fa fa-trash"></i></a>		
 						</td>
 					</tr>
 					<?php endforeach; ?>

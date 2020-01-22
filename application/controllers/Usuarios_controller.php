@@ -8,9 +8,8 @@ class Usuarios_controller extends CI_Controller {
 	public function __construct()
     {
         parent::__construct(); 
-        //$this->load->helper('helpers_helper');       
+      
         $this->load->model('Tbl_usuarios_Model');
-       // $this->load->model('Tbl_tarea_Model');
           if(!$this->session->userdata('log')){
         	redirect('Home');
         }
@@ -20,6 +19,7 @@ class Usuarios_controller extends CI_Controller {
 	{
 		$datos = array('datos' => '');
 		$result = array('datos' => '');
+		$emailbd = array('datos' => '');
 		$this->load->view('dashboard/menu');		
 	}
 	public function registrarUsuarios()
@@ -32,28 +32,57 @@ class Usuarios_controller extends CI_Controller {
 		$mensaje = array('titulo' => '', 'body' => '');
 
 		if($emailform && $passwordform &&  $veri_passform && $nombreform && $apellidosform){
-			$result = $this->Tbl_usuarios_Model->saveUsuario($nombreform, $apellidosform, $emailform, $passwordform);
-			if ($result != FALSE){
 
-				//mostrar mensaje exitoso
-				//limpiar formulario*/
-				$user['nombre'] = '';
-				$data = array('result' => '', 
-					      'error' => true, 
-					      'mensaje' => 'Registro almacenado satisfactoriamente',
-					      'class' => 'alert alert-danger');
-				$this->load->view('dashboard/menu', $user);
-				$this->load->view('dashboard/usuarios/registrar_usuario', $data);
-				$this->load->view('dashboard/cierredashboard');	
+			if($passwordform == $veri_passform){
+
+				$emailbd = $this->Tbl_usuarios_Model->findEmailUsuario($emailform);
+				
+				if($emailbd == false){
+
+					$result = $this->Tbl_usuarios_Model->saveUsuario($nombreform, $apellidosform, $emailform, $passwordform);
+					if ($result != FALSE){
+
+						//mostrar mensaje exitoso
+						//limpiar formulario*/
+						$user['nombre'] = '';
+						$data = array('result' => '', 
+								'error' => true, 
+								'mensaje' => 'El registro no se almacenó',
+								'class' => 'alert alert-danger');
+						$this->load->view('dashboard/menu', $user);
+						$this->load->view('dashboard/usuarios/registrar_usuario', $data);
+						$this->load->view('dashboard/cierredashboard');	
+					}else{
+						$user['nombre'] = '';
+						$data = array('result' => '', 
+								'error' => true, 
+								'mensaje' => 'Registro almacenado satisfactoriamente',
+								'class' => 'alert alert-success');
+						$this->load->view('dashboard/menu', $user);
+						$this->load->view('dashboard/usuarios/registrar_usuario', $data);
+						$this->load->view('dashboard/cierredashboard');
+					}						
+				
+				}else{
+
+					$user['nombre'] = '';
+					$data = array('result' => '', 
+							'error' => true, 
+							'mensaje' => 'El correo del usuario ya existe',
+							'class' => 'alert alert-danger');
+					$this->load->view('dashboard/menu', $user);
+					$this->load->view('dashboard/usuarios/registrar_usuario', $data);
+					$this->load->view('dashboard/cierredashboard');	
+				}
 			}else{
-				$user['nombre'] = '';
-				$data = array('result' => '', 
-					      'error' => true, 
-					      'mensaje' => 'Registro almacenado satisfactoriamente',
-					      'class' => 'alert alert-success');
-				$this->load->view('dashboard/menu', $user);
-				$this->load->view('dashboard/usuarios/registrar_usuario', $data);
-				$this->load->view('dashboard/cierredashboard');
+					$user['nombre'] = '';
+					$data = array('result' => '', 
+							'error' => true, 
+							'mensaje' => 'Los password nos coinciden',
+							'class' => 'alert alert-danger');
+					$this->load->view('dashboard/menu', $user);
+					$this->load->view('dashboard/usuarios/registrar_usuario', $data);
+					$this->load->view('dashboard/cierredashboard');							
 			}
 		}
 	}
@@ -75,7 +104,7 @@ class Usuarios_controller extends CI_Controller {
 		}else{
 			$data = array('result' => '', 
 				      'error' => true, 
-				      'mensaje' => 'Se edito satisfactoriamente',
+				      'mensaje' => 'Se editó satisfactoriamente',
 			          'class' => 'alert alert-success');
 			$user['nombre'] = '';
 				$this->load->view('dashboard/menu', $user);

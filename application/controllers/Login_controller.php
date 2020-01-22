@@ -23,7 +23,7 @@ class Login_controller extends CI_Controller {
 		//validar si el email y password se enviaron desde el formulario
 		if($emailform && $passwordform ){	
 		//	$this->load->view('/dashboard/menu');	
-			$result = $this->Tbl_usuarios_Model->findEmailUsuario($emailform);
+			$result = $this->Tbl_usuarios_Model->findLogin($emailform);
 			if ($result != FALSE){
 				foreach ($result as $row) {
 					$emaildb = $row->email;

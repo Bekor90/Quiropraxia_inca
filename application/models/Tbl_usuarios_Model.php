@@ -58,10 +58,27 @@ class Tbl_usuarios_Model extends CI_model {
 	}
 
 
-	function findEmailUsuario($email)
+	function findLogin($email)
 	{
 
 		$this->db->select('id_usuario, nombres, apellidos, email, password');
+		$this->db->from('usuarios');
+		$this->db->where('email', $email);
+		$usuario = $this->db->get();
+
+		if ($usuario->num_rows()>0) {
+			
+			return $usuario->result();
+		}else{
+			return FALSE;
+		}
+
+	}
+
+	function findEmailUsuario($email)
+	{
+
+		$this->db->select('email');
 		$this->db->from('usuarios');
 		$this->db->where('email', $email);
 		$usuario = $this->db->get();
