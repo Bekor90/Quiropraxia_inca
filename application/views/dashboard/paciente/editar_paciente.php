@@ -69,7 +69,7 @@
 						<label for="lbapellido">Medicamentos</label>
 						<input type="text" class="form-control" value="<?php echo $row->medicamento;?>" id="medicamento" name="medicamento" required></input>
 					</div> <!-- form-group -->	
-				</div> <!-- col-xs-4 col-md-4 -->
+				</div> <!-- col-xs-3 col-md-3 -->
 				<div class="col-xs-3 col-md-3">
 					<div class="form-group">
 						<label for="lbdireccion">Dirección</label>
@@ -91,7 +91,11 @@
 						<label for="lbfechanac">Fecha nacimiento</label>
 						<input type="date" class="form-control" value="<?php echo $row->fecha_nac;?>" id="fecha_nac" name="fecha_nac" required></input>
 					</div> <!-- form-group -->
-				</div>
+					<div class="form-group">
+						<label for="lbcontrol">Fecha control</label>
+						<input type="date" class="form-control" id="fecha_control" name="fecha_control" required></input>
+					</div> <!-- form-group -->
+				</div><!-- col-xs-3 col-md-3 -->
 				<div class="col-xs-3 col-md-3">
 					<div class="form-group">
 						<label for="lbdescripcion">Descripción </label>
@@ -102,9 +106,9 @@
 						<textarea id="diagnostico" name="diagnostico" rows="4"><?php echo $row->diagnostico;?></textarea>
 					</div><!-- form-group -->
 					<div class="form-group">
-						<label for="lbcontrol">Fecha control</label>
-						<input type="date" class="form-control" value="<?php echo $row->fecha_control;?>" id="fecha_control" name="fecha_control" required></input>
-					</div> <!-- form-group -->
+						<label for="lbdtratamiento">Tratamiento </label>
+						<textarea id="tratamiento" name="tratamiento" rows="4"></textarea>
+					</div><!-- form-group -->
 				</div> <!-- col-xs-3 col-md-3 -->
 				<?php endforeach; ?>
 			<div class="col-xs-12 col-md-12">

@@ -30,7 +30,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
 					</div> <!-- form-group -->
 					<div class="form-group">
 						<label for="lbedad">Edad</label>
-						<input type="num" class="form-control"  id="edad" name="edad" required></input>
+						<input type="number" class="form-control"  id="edad" name="edad" required></input>
 					</div> <!-- form-group -->
 					<div class="form-group">	
 						<label for="lbgenero">Género</label>
@@ -71,7 +71,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
 						<label for="lbapellido">Medicamentos</label>
 						<input type="text" class="form-control" placeholder="medicamento" id="medicamento" name="medicamento" required></input>
 					</div> <!-- form-group -->	
-				</div> <!-- col-xs-4 col-md-4 -->
+				</div> <!-- col-xs-3 col-md-3 -->
 				<div class="col-xs-3 col-md-3">
 					<div class="form-group">
 						<label for="lbdireccion">Dirección</label>
@@ -79,21 +79,25 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
 					</div> <!-- form-group -->
 					<div class="form-group">
 						<label for="lbtelefono">Teléfono</label>
-						<input type="num" class="form-control" placeholder="telefono" id="telefono" name="telefono" required></input>
+						<input type="text" class="form-control" id="telefono" name="telefono" required></input>
 					</div> <!-- form-group -->
 					<div class="form-group">
 						<label for="lbpeso">Peso</label>
-						<input type="num" class="form-control" placeholder="peso" id="peso" name="peso" required></input>
+						<input type="text" class="form-control" placeholder="peso" id="peso" name="peso" required></input>
 					</div> <!-- form-group -->
 					<div class="form-group">
 						<label for="lbestatura">Estatura</label>
-						<input type="num" class="form-control"  id="estatura" name="estatura" required></input>
+						<input type="text" class="form-control"  id="estatura" name="estatura" required></input>
 					</div> <!-- form-group -->
 					<div class="form-group">
 						<label for="lbfechanac">Fecha nacimiento</label>
 						<input type="date" class="form-control" id="fecha_nac" name="fecha_nac" required></input>
 					</div> <!-- form-group -->
-				</div>
+					<div class="form-group">
+						<label for="lbcontrol">Fecha control</label>
+						<input type="date" class="form-control" id="fecha_control" name="fecha_control" required></input>
+					</div> <!-- form-group -->
+				</div><!-- col-xs-3 col-md-3 --> 
 				<div class="col-xs-3 col-md-3">
 					<div class="form-group">
 						<label for="lbdescripcion">Descripción </label>
@@ -104,10 +108,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
 						<textarea id="diagnostico" name="diagnostico" rows="4"></textarea>
 					</div><!-- form-group -->
 					<div class="form-group">
-						<label for="lbcontrol">Fecha control</label>
-						<input type="date" class="form-control" id="fecha_control" name="fecha_control" required></input>
-					</div> <!-- form-group -->
-				</div>
+						<label for="lbdtratamiento">Tratamiento </label>
+						<textarea id="tratamiento" name="tratamiento" rows="4"></textarea>
+					</div><!-- form-group -->					
+				</div><!-- col-xs-3 col-md-3 -->
 				<div class="col-xs-12 col-md-12">
 					<center>
 						<button  type="submit" id="registrar" value="registrar" class="btn btn-primary btn-lg"> Guardar

@@ -40,6 +40,7 @@ class Pacientes_controller extends CI_Controller {
 		$fecha_nacform = $this->input->post('fecha_nac', TRUE);
 		$descripcionform = $this->input->post('descripcion', TRUE);
 		$diagnosticoform = $this->input->post('diagnostico', TRUE);
+		$tratamientoform = $this->input->post('tratamiento', TRUE);
 		$fecha_controlform = $this->input->post('fecha_control', TRUE);
 		$medicamentoform = $this->input->post('medicamento', TRUE);
 		$mensaje = array('titulo' => '', 'body' => '');
@@ -48,7 +49,7 @@ class Pacientes_controller extends CI_Controller {
 		if($nombreform && $apellidosform && $cedulaform && $edadform && $generoform && $epsform &&
 		  $ocupacionform && $escolaridadform && $ciudadform && $municipioform && $barrioform &&
 		  $direccionform && $telefonoform && $pesoform && $estaturaform && $fecha_nacform && 
-		  $descripcionform && $diagnosticoform && $fecha_controlform){
+		  $descripcionform && $diagnosticoform && $tratamientoform && $fecha_controlform){
 
 		  $fecha_reg = date('Y-m-d');		
 		  $estado = 1;			
@@ -56,7 +57,7 @@ class Pacientes_controller extends CI_Controller {
 		  $result = $this->Tbl_paciente_Model->savePaciente($nombreform, $apellidosform, $edadform, $generoform,
 		  $epsform, $ocupacionform, $escolaridadform, $ciudadform, $municipioform, $barrioform, $direccionform, 
 		  $telefonoform, $pesoform, $estaturaform, $fecha_nacform, $fecha_reg, $descripcionform, $diagnosticoform,
-		  $medicamentoform, $estado, $fecha_controlform, $cedulaform);
+		  $medicamentoform, $estado, $fecha_controlform, $cedulaform, $tratamientoform);
 			if ($result){
 
 				$user['nombre'] = '';
@@ -137,6 +138,7 @@ class Pacientes_controller extends CI_Controller {
 		$estaturaform = $this->input->post('estatura', TRUE);
 		$fecha_nacform = $this->input->post('fecha_nac', TRUE);
 		$descripcionform = $this->input->post('descripcion', TRUE);
+		$tratamientoform = $this->input->post('tratamiento', TRUE);
 		$diagnosticoform = $this->input->post('diagnostico', TRUE);
 		$fecha_controlform = $this->input->post('fecha_control', TRUE);
 		$medicamentoform = $this->input->post('medicamento', TRUE);
@@ -163,14 +165,15 @@ class Pacientes_controller extends CI_Controller {
 					'medicamento' => $medicamentoform,
 					'estado' => 1,
 					'fecha_control' => $fecha_controlform,
-					'cedula' => $cedulaform);
+					'cedula' => $cedulaform,
+					'tratamiento' => $tratamientoform);
 
 
 		if($id && $nombreform && $apellidosform && $edadform && $generoform && $epsform &&
 			$ocupacionform && $escolaridadform && $ciudadform && $municipioform && $barrioform &&
 			$direccionform && $telefonoform && $pesoform && $estaturaform && $fecha_nacform &&
-			$fecharegform && $descripcionform && $diagnosticoform && $medicamentoform && $fecha_controlform &&
-			$cedulaform){
+			$fecharegform && $descripcionform && $diagnosticoform && $tratamientoform && $medicamentoform &&
+			$fecha_controlform && $cedulaform){
 
 			$result = $this->Tbl_paciente_Model->updatePaciente($data, $id);
 			if ($result){
