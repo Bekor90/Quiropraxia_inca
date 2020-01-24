@@ -14,6 +14,7 @@ $route['editar/usuario/(:num)'] = 'Usuarios_controller/editarUsuarios/$1';
 $route['actualizar/usuario'] = 'Usuarios_controller/editar';
 $route['eliminar/usuario/(:num)'] = 'Usuarios_controller/eliminarUsuario/$1';
 
+$route['buscar/paciente'] = 'Pacientes_controller/buscarPaciente';
 $route['registrar/paciente'] = 'Pacientes_controller/registrarPaciente';
 $route['editar/paciente/(:num)'] = 'Pacientes_controller/editarPaciente/$1';
 $route['actualizar/paciente'] = 'Pacientes_controller/actualizar';

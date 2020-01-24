@@ -126,7 +126,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
 
   	<div class="collapse" id="Collapseconsultar">
 	  <div class="card-personalizada">
-	  	<?php $result = getPacientes();?>
+	  <div class="col-xs-3 col-md-3">
+		<div class="form-group">
+				<label for="lbfiltro"> Cédula</label>
+				<input type="text" class="form-control" id="filtro" name="filtro" required></input>
+				<button  type="submit" id="btfiltro" value="" class="btn btn-primary btn-lg"> Buscar
+				</button>
+			</div><!-- form-group -->
+		</div><!-- col-xs-3 col-md-3 -->		  
+		
 	  	<?php if($result): ?>   <!-- validando consulta -->
 	  </br></br>
 	  <div class="table-responsive">
@@ -159,10 +167,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
 						<td><?php echo $row->diagnostico ?></td>
 						<td><?php echo $row->medicamento ?></td>
 						<td>
-							<a class="btn-outline-primary" href="<?php echo base_url().'editar/paciente/'.$row->id_paciente?>"><i class="fa fa-pencil-square-o"></i></a>
+						  <a class="btn-outline-primary" href="<?php echo base_url().'editar/paciente/'.$row->id_paciente?>"><i class="fa fa-pencil-square-o"></i></a>
 						</td>
 						<td>
-						<a class="btn-outline-danger" href="<?php echo base_url().'eliminar/paciente/'.$row->id_paciente?>"><i class=" fa fa-trash"></i></a>		
+						 <a class="btn-outline-danger" href="<?php echo base_url().'eliminar/paciente/'.$row->id_paciente?>"><i class=" fa fa-trash"></i></a>		
 						</td>
 					</tr>
 					<?php endforeach; ?>
@@ -172,5 +180,4 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
 		<?php endif; ?> 
 	  </div>  <!-- card-personalizada--> 
 	</div>   <!-- collapse--> 
-
 </div>     <!-- /#page-content-wrapper -->

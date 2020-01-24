@@ -20,6 +20,37 @@ class Pacientes_controller extends CI_Controller {
 	{
 		$this->load->view('dashboard/menu');		
 	}
+
+	public function buscarPaciente()
+	{
+		$buscarform = $this->input->post('filtro', TRUE);
+
+		if($buscarform){
+
+			$result = $this->Tbl_paciente_Model->findByCedulaPaciente($buscarform);
+
+			if($result){
+				$user['nombre'] = '';
+				$data = array('result' => $result, 
+						'error' => false, 
+						'mensaje' => '',
+						'class' => '');
+				$this->load->view('dashboard/menu', $user);
+				$this->load->view('dashboard/paciente/registrar_paciente', $data);
+				$this->load->view('dashboard/cierredashboard');
+			}else{
+				$user['nombre'] = '';
+				$data = array('result' => '', 
+						'error' => false, 
+						'mensaje' => '',
+						'class' => '');
+				$this->load->view('dashboard/menu', $user);
+				$this->load->view('dashboard/paciente/registrar_paciente', $data);
+				$this->load->view('dashboard/cierredashboard');
+			}
+		}
+	}
+
 	public function registrarPaciente()
 	{
 		$nombreform = $this->input->post('nombre', TRUE);

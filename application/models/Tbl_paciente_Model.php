@@ -121,6 +121,19 @@ class Tbl_paciente_Model extends CI_model {
 		}
 	}*/
 
+	function findByCedulaPaciente($cedula)
+	{
+		$this->db->select('*');
+		$this->db->from('paciente');
+		$this->db->where('cedula', $cedula);
+		$paciente = $this->db->get();
+		if ($paciente->num_rows()>0) {			
+			return $paciente->result();
+		}else{
+			return FALSE;
+		}
+	}
+
 	function findByPaciente($id)
 	{
 		$this->db->select('*');
