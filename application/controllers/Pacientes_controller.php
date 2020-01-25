@@ -23,31 +23,44 @@ class Pacientes_controller extends CI_Controller {
 
 	public function buscarPaciente()
 	{
-		$buscarform = $this->input->post('filtro', TRUE);
-
-		if($buscarform){
-
+		
+		if (!$this->input->is_ajax_request()) {
+			$user['nombre'] = '';
+			$data = array('result' => $result, 
+					'error' => TRUE, 
+					'mensaje' => 'Error al ejecutar petición',
+					'class' => 'alert alert-danger');
+			$this->load->view('dashboard/menu', $user);
+			$this->load->view('dashboard/paciente/registrar_paciente', $data);
+			$this->load->view('dashboard/cierredashboard');
+        }else{
+			$buscarform =$this->input->post("filtro");
 			$result = $this->Tbl_paciente_Model->findByCedulaPaciente($buscarform);
+	
+				if($result){
+				/*	$user['nombre'] = '';
+					$data = array('result' => $result, 
+							'error' => false, 
+							'mensaje' => '',
+							'class' => '');
+					$this->load->view('dashboard/menu', $user);
+					$this->load->view('dashboard/paciente/registrar_paciente', $data);
+					$this->load->view('dashboard/cierredashboard');*/
 
-			if($result){
-				$user['nombre'] = '';
-				$data = array('result' => $result, 
-						'error' => false, 
-						'mensaje' => '',
-						'class' => '');
-				$this->load->view('dashboard/menu', $user);
-				$this->load->view('dashboard/paciente/registrar_paciente', $data);
-				$this->load->view('dashboard/cierredashboard');
-			}else{
-				$user['nombre'] = '';
-				$data = array('result' => '', 
-						'error' => false, 
-						'mensaje' => '',
-						'class' => '');
-				$this->load->view('dashboard/menu', $user);
-				$this->load->view('dashboard/paciente/registrar_paciente', $data);
-				$this->load->view('dashboard/cierredashboard');
-			}
+					echo json_encode($result);
+				}else{
+				/*	$user['nombre'] = '';
+					$data = array('result' => '', 
+							'error' => false, 
+							'mensaje' => '',
+							'class' => '');
+					$this->load->view('dashboard/menu', $user);
+					$this->load->view('dashboard/paciente/registrar_paciente', $data);
+					$this->load->view('dashboard/cierredashboard');*/
+
+					echo json_encode($result);
+				}
+			
 		}
 	}
 

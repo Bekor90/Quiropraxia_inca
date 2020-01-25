@@ -28,15 +28,20 @@ $(document).ready(function(){
       }
     });
 
-    $("#btfiltro").click(function(e){
-      e.preventDefault();
-			$.ajax({
-				// cargamos url a nuestro contralador y método indicado
-				url:'<?php echo base_url();?>/buscar/paciente',
-				type: 'POST',
+    $("#btfiltro").click(function(){
+
+      var input_valor = $("#filtro").val();
+			$.ajax({			
+				url:'http://localhost/Quiropraxia_inca/buscar/paciente',
+        type: 'POST',
+        data: {filtro: input_valor },
 				success:function(data){
-					if(data){
-						alert(data)
+					if(data){           
+            console.log(data);
+            
+           /* $(".section-modal .profile").click(function() {
+              $(".overlay").addClass("is-active");             
+            });*/
 					}
 					else{
 						alert("error")

@@ -129,7 +129,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
 	  <div class="col-xs-3 col-md-3">
 		<div class="form-group">
 				<label for="lbfiltro"> Cédula</label>
-				<input type="text" class="form-control" id="filtro" name="filtro" required></input>
+				<input type="number" class="form-control" id="filtro" name="filtro" required></input>
 				<button  type="submit" id="btfiltro" value="" class="btn btn-primary btn-lg"> Buscar
 				</button>
 			</div><!-- form-group -->
