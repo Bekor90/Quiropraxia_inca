@@ -7,8 +7,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
 		</div>
      <?php endif; ?>
      <center> <h3>Pacientes</h3></center>
-     <button class="btn btn-primary" data-toggle="collapse" href="#Collapseregistrar" role="button" aria-expanded="false" aria-controls="registrar" id="registrar">Registrar</button>
-     <button class="btn btn-primary" data-toggle="collapse" href="#Collapseconsultar" role="button" aria-expanded="false" aria-controls="consultar" id="consultar">Consultar</button>
+     <button class="btn btn-primary" data-toggle="collapse" href="#Collapseregistrar" role="button" aria-expanded="false" aria-controls="registrar" id="registrar">
+	 <span class="fas fa-user-plus"></span>  Registrar</button>
+     <button class="btn btn-primary" data-toggle="collapse" href="#Collapseconsultar" role="button" aria-expanded="false" aria-controls="consultar" id="consultar">
+	 <span class="fas fa-book-open"></span>  Consultar</button>
      <style> #Collapseregistrar {margin: 10px; }</style>
   	<div class="collapse" id="Collapseregistrar">
   	<div class="card-personalizada">
@@ -114,7 +116,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
 				</div><!-- col-xs-3 col-md-3 -->
 				<div class="col-xs-12 col-md-12">
 					<center>
-						<button  type="submit" id="registrar" value="registrar" class="btn btn-primary btn-lg"> Guardar
+						<button  type="submit" id="registrar" value="registrar" class="btn btn-primary btn-lg"><span class="fas fa-save"></span> Guardar
 						</button>						
 					</center>
 				</div> <!-- col-xs-12 col-md-12 -->
@@ -128,56 +130,130 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
 	  <div class="card-personalizada">
 	  <div class="col-xs-3 col-md-3">
 		<div class="form-group">
-				<label for="lbfiltro"> Cédula</label>
+				<label id="lbfiltro"><strong> Cédula</strong></label>
 				<input type="number" class="form-control" id="filtro" name="filtro" required></input>
-				<button  type="submit" id="btfiltro" value="" class="btn btn-primary btn-lg"> Buscar
+				<button  type="submit" id="btfiltro" value="" class="btn btn-primary btn-lg"><span class="fa fa-search"></span> Buscar
 				</button>
-			</div><!-- form-group -->
-		</div><!-- col-xs-3 col-md-3 -->		  
+				<button  type="submit" id="btlimpiar" value="" class="btn btn-primary btn-lg"><span class="fas fa-broom"></span> Limpiar
+				</button>
+			</div><!-- form-group -->		
+		</div><!-- col-xs-3 col-md-3 -->		
 		
-	  	<?php if($result): ?>   <!-- validando consulta -->
-	  </br></br>
-	  <div class="table-responsive">
-		    <table class="table table-bordered table-striped">	 <!-- mostrar tabla con resultados-->
-		    	<thead>
-					<th class="info">Id</th>
-					<th class="info">Nombre</th>
-					<th class="info">Apellidos</th>
-					<th class="info">Edad</th>	
-					<th class="info">Genero</th>	
-					<th class="info">EPS</th>
-					<th class="info">Peso</th>
-					<th class="info">Estatura</th>
-					<th class="info">Diagnóstico</th>
-					<th class="info">Medicamento</th>
-					<th class="info">Editar</th>					
-					<th class="info">Eliminar</th>	
-				</thead>
-				<tbody>
-					<?php foreach($result as $row): ?>
-					<tr>
-						<td><?php echo $row->id_paciente ?></td>
-						<td><?php echo $row->nombre ?></td>
-						<td><?php echo $row->apellidos ?></td>
-						<td><?php echo $row->edad ?></td>
-						<td><?php echo $row->genero ?></td>
-						<td><?php echo $row->eps ?></td>
-						<td><?php echo $row->peso ?></td>
-						<td><?php echo $row->estatura ?></td>
-						<td><?php echo $row->diagnostico ?></td>
-						<td><?php echo $row->medicamento ?></td>
-						<td>
-						  <a class="btn-outline-primary" href="<?php echo base_url().'editar/paciente/'.$row->id_paciente?>"><i class="fa fa-pencil-square-o"></i></a>
-						</td>
-						<td>
-						 <a class="btn-outline-danger" href="<?php echo base_url().'eliminar/paciente/'.$row->id_paciente?>"><i class=" fa fa-trash"></i></a>		
-						</td>
-					</tr>
-					<?php endforeach; ?>
-				</tbody>
-			</table>
-		</div>
-		<?php endif; ?> 
+		<div class="container" id="information" style="display: none">
+			<div class="row">
+			<div class="col-xs-12 col-md-12">
+			<center>
+			 <label for="lbnombre"><h2><strong>Información del paciente</strong></h2></label>	
+	 		</center>
+			</div>
+				<div class="col-xs-3 col-md-3">
+					<div class="form-group">
+						<label for="lbnombre"><strong>Nombre: </strong></label>		
+						<label id="infnombre"></label>					
+					</div> <!-- form-group -->
+					<div class="form-group">
+						<label for="lbgenero"><strong>Genero: </strong></label>		
+						<label id="infgenero"></label>					
+					</div> <!-- form-group -->					
+					<div class="form-group">
+						<label for="lbciudad"><strong>Ciudad: </strong></label>		
+						<label id="infciudad"></label>					
+					</div> <!-- form-group -->	
+					<div class="form-group">
+						<label for="lbtelefono"><strong>Telefono: </strong></label>		
+						<label id="inftelefono"></label>					
+					</div> <!-- form-group -->							
+					<div class="form-group">
+						<label for="lbfecnaci"><strong>Fecha naci: </strong></label>		
+						<label id="infecnaci"></label>					
+					</div> <!-- form-group -->		
+				</div>	<!-- col-xs-3 col-md-3 -->						
+				<div class="col-xs-3 col-md-3">														
+					<div class="form-group">
+						<label for="lbapellidos"><strong>Apellidos: </strong></label>		
+						<label id="infapellidos"></label>					
+					</div> <!-- form-group -->
+					<div class="form-group">
+						<label for="lbeps"><strong>Eps: </strong></label>		
+						<label id="infeps"></label>					
+					</div> <!-- form-group -->				
+					<div class="form-group">
+						<label for="lbmunicipio"><strong>Municipio: </strong></label>		
+						<label id="infmunicipio"></label>					
+					</div> <!-- form-group -->		
+					<div class="form-group">	
+						<label for="lbescolaridad"><strong>Escolaridad: </strong></label>		
+						<label id="infescolaridad"></label>					
+					</div> <!-- form-group -->
+					<div class="form-group">
+						<label for="lbfeccontrol"><strong>Fecha control: </strong></label>		
+						<label id="infeccontrol"></label>					
+					</div> <!-- form-group -->								
+				</div> <!-- col-xs-3 col-md-3 -->
+				<div class="col-xs-3 col-md-3">
+					<div class="form-group">
+						<label for="lbcedula"><strong>Cedula: </strong></label>		
+						<label id="infcedula"></label>					
+					</div> <!-- form-group -->
+					<div class="form-group">
+						<label for="lbestatura"><strong>Estatura: </strong></label>		
+						<label id="infestatura"></label>					
+					</div> <!-- form-group -->
+					<div class="form-group">
+						<label for="lbbarrio"><strong>Barrio: </strong></label>		
+						<label id="infbarrio"></label>					
+					</div> <!-- form-group -->	
+					<div class="form-group">
+						<label for="lbocupa"><strong>Ocupación: </strong></label>		
+						<label id="infocupa"></label>					
+					</div> <!-- form-group -->			
+					<div class="form-group">
+					 <button type="submit" id="btdescripcion" class="btn btn-info"><span class="far fa-eye"></span> Ver Descripción</button>
+					</div> <!-- form-group -->			
+
+				</div><!-- col-xs-3 col-md-3 --> 
+				<div class="col-xs-3 col-md-3">	
+					<div class="form-group">
+						<label for="lbedad"><strong>Edad: </strong></label>		
+						<label id="infedad"></label>					
+					</div> <!-- form-group -->
+					<div class="form-group">				
+						<label for="lbpeso"><strong>Peso: </strong></label>		
+						<label id="infpeso"></label>					
+					</div> <!-- form-group -->
+					<div class="form-group">
+						<label for="lbdireccion"><strong>Direccion: </strong></label>		
+						<label id="infdireccion"></label>					
+					</div> <!-- form-group -->	
+					<div class="form-group">
+						<label for="lbmedicamento"><strong>Medicamento: </strong></label>		
+						<label id="infmedicamento"></label>					
+					</div> <!-- form-group -->	
+					<div class="form-group">
+					 <button type="submit" id="btdiagnostico" class="btn btn-info"><span class="far fa-eye"></span> Ver Diagnóstico</button>
+					</div> <!-- form-group -->	
+				</div><!-- col-xs-3 col-md-3 -->
+				<div class="col-xs-12 col-md-12" id="textdiagnostico" style="display: none">				
+					<label for="lbdiagnostico"><strong>Diagnóstico</strong></label>
+					<textarea id="txtdiagnostico" name="descripcion" rows="4" style="width:100%"></textarea>				
+				</div> <!-- col-xs-12 col-md-12 -->
+				<div class="col-xs-12 col-md-12" id="textdescripcion" style="display: none">				
+					<label for="lbdescripcion"><strong>Descripción</strong></label>
+					<textarea id="txtdescripcion" name="descripcion" rows="4" style="width:100%"></textarea>		
+				</div> <!-- col-xs-12 col-md-12 -->
+				<div class="col-xs-12 col-md-12">
+					<center>
+						<button  type="submit" id="update" value="update" class="btn btn-primary btn-lg"><span class="fas fa-pencil-alt"> Actualizar
+						</button>	
+						<button  type="submit" id="eliminar" value="eliminar" class="btn btn-danger btn-lg"><span class="fas fa-trash"> Eliminar
+						</button>						
+					</center>
+			    </div> <!-- col-xs-12 col-md-12 -->
+			</div>	 <!-- row --> 					
+			</div>    <!-- container--> 
+
 	  </div>  <!-- card-personalizada--> 
 	</div>   <!-- collapse--> 
+
+	
 </div>     <!-- /#page-content-wrapper -->

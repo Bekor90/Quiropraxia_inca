@@ -113,7 +113,7 @@
 				<?php endforeach; ?>
 			<div class="col-xs-12 col-md-12">
 				<center>
-					<button type="submit" id="actualizar" value="actualizar" class="btn btn-primary btn-lg"> Actualizar
+					<button type="submit" id="actualizar" value="actualizar" class="btn btn-primary btn-lg"><span class="fas fa-save"></span> Actualizar
 					</button>
 				</center>
 			</div> <!-- col-xs-12 col-md-12 -->			

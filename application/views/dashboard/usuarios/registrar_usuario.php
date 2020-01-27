@@ -6,8 +6,10 @@
 		</div>
       <?php endif; ?>
       <center> <h3>Usuarios</h3></center>
-      <button class="btn btn-primary" data-toggle="collapse" href="#Collapseregistrar" role="button" aria-expanded="false" aria-controls="registrar" id="registrar">Registrar</button>
-     <button class="btn btn-primary" data-toggle="collapse" href="#Collapseconsultar" role="button" aria-expanded="false" aria-controls="consultar" id="consultar">Consultar</button>
+      <button class="btn btn-primary" data-toggle="collapse" href="#Collapseregistrar" role="button" aria-expanded="false" aria-controls="registrar" id="registrar">
+	  <span class="fas fa-user-plus"></span> Registrar</button>
+     <button class="btn btn-primary" data-toggle="collapse" href="#Collapseconsultar" role="button" aria-expanded="false" aria-controls="consultar" id="consultar">
+	 <span class="fas fa-book-open"></span> Consultar</button>
   	
   	<div class="collapse" id="Collapseregistrar">
   	<div class="card-personalizada">
@@ -46,7 +48,7 @@
 			<div class="col-xs-4 col-md-4"></div>
 			<div class="col-xs-12 col-md-12">
 				<center>
-					<button  type="submit" id="registrar" value="registrar" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#message" > Guardar
+					<button  type="submit" id="registrar" value="registrar" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#message"><span class="fas fa-save"></span> Guardar
 					</button>						
 					</center>
 			</div>
