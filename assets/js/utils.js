@@ -48,7 +48,7 @@ $(document).ready(function(){
 
       var input_valor = $("#filtro").text('');
 			$.ajax({			
-				url:'http://localhost/Quiropraxia_inca/buscar/paciente',
+				url:'https://quiropraxia.herokuapp.com/buscar/paciente',
         type: 'POST',
         data: {filtro: input_valor },
 				success:function(data){
