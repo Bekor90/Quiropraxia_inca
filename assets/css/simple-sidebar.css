@@ -36,8 +36,9 @@ align-content: center !important;
 
 #page-content-wrapper {
   min-width: 100vw;
-   padding: 0.875rem 1.25rem;
-    font-size: 1.2rem;
+  padding: 0.875rem 1.25rem;
+  font-size: 1.2rem;
+  font-family: 'Fira Mono', sans-serif;
 }
 
 #wrapper.toggled #sidebar-wrapper {

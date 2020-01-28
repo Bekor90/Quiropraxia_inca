@@ -43,8 +43,7 @@ class Pacientes_controller extends CI_Controller {
 					echo json_encode($result);
 				}else{
 					echo json_encode($result);
-				}
-			
+				}	
 		}
 	}
 
@@ -230,9 +229,24 @@ class Pacientes_controller extends CI_Controller {
 	{		
 		if($id >= 0){
 			$result = $this->Tbl_paciente_Model->deletePaciente($id);
-			if ($result != FALSE){
-		
-				redirect('Dashboard');
+			if ($result != FALSE){		
+				$user['nombre'] = '';
+				$data = array('result' => '', 
+						'error' => true, 
+						'mensaje' => 'Registro eliminado satisfactoriamente',
+						'class' => 'alert alert-success');
+				$this->load->view('dashboard/menu', $user);
+				$this->load->view('dashboard/paciente/registrar_paciente', $data);
+				$this->load->view('dashboard/cierredashboard');
+			}else{
+				$user['nombre'] = '';
+				$data = array('result' => '', 
+						'error' => true, 
+						'mensaje' => 'Error al eliminar el registro',
+						'class' => 'alert alert-danger');
+				$this->load->view('dashboard/menu', $user);
+				$this->load->view('dashboard/paciente/registrar_paciente', $data);
+				$this->load->view('dashboard/cierredashboard');
 			}
 		}
 

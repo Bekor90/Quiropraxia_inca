@@ -93,7 +93,7 @@
 					</div> <!-- form-group -->
 					<div class="form-group">
 						<label for="lbcontrol">Fecha control</label>
-						<input type="date" class="form-control" id="fecha_control" name="fecha_control" required></input>
+						<input type="date" class="form-control"  value="<?php echo $row->fecha_control;?>" id="fecha_control" name="fecha_control" required></input>
 					</div> <!-- form-group -->
 				</div><!-- col-xs-3 col-md-3 -->
 				<div class="col-xs-3 col-md-3">
@@ -107,7 +107,7 @@
 					</div><!-- form-group -->
 					<div class="form-group">
 						<label for="lbdtratamiento">Tratamiento </label>
-						<textarea id="tratamiento" name="tratamiento" rows="4"></textarea>
+						<textarea id="tratamiento" name="tratamiento" rows="4"><?php echo $row->tratamiento;?></textarea>
 					</div><!-- form-group -->
 				</div> <!-- col-xs-3 col-md-3 -->
 				<?php endforeach; ?>

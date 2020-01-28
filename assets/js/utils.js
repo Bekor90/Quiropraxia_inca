@@ -1,7 +1,7 @@
 $(document).ready(function(){
   var isEnable = false;
   var isActiveDiag = false;
-  var isActiveDesc = false;
+  var baseUrl = "https://quiropraxia.herokuapp.com/";
     $("#menu-toggle").click(function(e) {
       e.preventDefault();
       $("#wrapper").toggleClass("toggled");      
@@ -22,6 +22,7 @@ $(document).ready(function(){
       e.preventDefault();
       if(isEnable){
         isEnable = false;
+    //    $("#cardpersonalizada").removeClass('background-form');
         $("#registrar").removeAttr('disabled');
         $("#lbfiltro").css({'display': ''});
         $("#filtro").css({'display': ''});
@@ -46,15 +47,16 @@ $(document).ready(function(){
 
     $("#btfiltro").click(function(){
 
-      var input_valor = $("#filtro").val();     
+      var input_valor = $("#filtro").val();  
+    
 			$.ajax({			
-				url:'https://quiropraxia.herokuapp.com/buscar/paciente',
+				url:baseUrl+'buscar/paciente',
         type: 'POST',
         data: {
           filtro: input_valor
         },
-				success:function(data){
-
+				success:function(data){        
+        // console.log(data) ;
           var datj= JSON.parse(data);
 
          	if(!datj){                   
@@ -66,8 +68,9 @@ $(document).ready(function(){
             $("#lbfiltro").css({'display': 'none'});
             $("#filtro").css({'display': 'none'});
             $("#btfiltro").css({'display': 'none'});
-            $("#btlimpiar").css({'display': 'none'});          
-  
+            $("#btlimpiar").css({'display': 'none'}); 
+                      
+            $("#idpaciente").val(datj[0]['id_paciente']);
             $("#infnombre").text(datj[0]['nombre']);
             $("#infapellidos").text(datj[0]['apellidos']);
             $("#infcedula").text(datj[0]['cedula']);
@@ -88,8 +91,8 @@ $(document).ready(function(){
             $("#infeccontrol").text(datj[0]['fecha_control']); 
             $("#txtdiagnostico").text(datj[0]['diagnostico']);
             $("#txtdescripcion").text(datj[0]['descripcion']);
+            $("#txttratamiento").text(datj[0]['tratamiento']);
             $("#filtro").val('');                
-
 					}
 				},error: function() {
           console.log("Por favor verifique los datos de búsqueda");
@@ -103,30 +106,61 @@ $(document).ready(function(){
      if(isActiveDiag){
       $("#textdiagnostico").css({'display': 'none'});
       $("#textdescripcion").css({'display': 'none'});
+      $("#texttratamiento").css({'display': 'none'});
       isActiveDiag = false;
      }else{
       $("#textdiagnostico").css({'display': ''});
       $("#textdescripcion").css({'display': 'none'});
+      $("#texttratamiento").css({'display': 'none'});
       isActiveDiag = true;
      }
     
     });
-
 
     $("#btdescripcion").click(function(e) {
       e.preventDefault();
       if(isActiveDiag){
         $("#textdescripcion").css({'display': 'none'});
         $("#textdiagnostico").css({'display': 'none'});
+        $("#texttratamiento").css({'display': 'none'});
         isActiveDiag = false;
       }else{
         $("#textdescripcion").css({'display': ''});
         $("#textdiagnostico").css({'display': 'none'});
+        $("#texttratamiento").css({'display': 'none'});
         isActiveDiag = true;
       }
     
     });
 
+    $("#bttratamiento").click(function(e) {
+      e.preventDefault();
+      if(isActiveDiag){
+        $("#textdescripcion").css({'display': 'none'});
+        $("#textdiagnostico").css({'display': 'none'});
+        $("#texttratamiento").css({'display': 'none'});
+        isActiveDiag = false;
+      }else{
+        $("#texttratamiento").css({'display': ''});
+        $("#textdiagnostico").css({'display': 'none'});
+        $("#textdescripcion").css({'display': 'none'});
+        isActiveDiag = true;
+      }
+    
+    });
+
+    $("#btactualizar").click(function() {
+     
+      var id = $("#idpaciente").val();      
+      let ruta = baseUrl+"editar/paciente/"+id;
+      window.location.href = ruta+'';
+    });
+
+    $("#bteliminar").click(function() {     
+      var id = $("#idpaciente").val();      
+      let ruta = baseUrl+"eliminar/paciente/"+id;
+      window.location.href = ruta+'';
+    });
   
 });
 

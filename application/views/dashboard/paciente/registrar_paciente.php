@@ -18,7 +18,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
         	<div class="container">
 			<div class="row">
 				<div class="col-xs-3 col-md-3">
-					<div class="form-group">
+					<div class="form-group">					
 						<label for="lbnombre">Nombre</label>
 						<input type="text" class="form-control" placeholder="nombre" id="nombre" name="nombre" required></input>
 					</div> <!-- form-group -->
@@ -127,27 +127,31 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
 		</div>   <!-- collapse--> 
 
   	<div class="collapse" id="Collapseconsultar">
-	  <div class="card-personalizada">
+	  <div class="col-xs-12 col-md-12">
 	  <div class="col-xs-3 col-md-3">
 		<div class="form-group">
-				<label id="lbfiltro"><strong> Cédula</strong></label>
-				<input type="number" class="form-control" id="filtro" name="filtro" required></input>
+			<label id="lbfiltro"><strong> Cédula:</strong></label>
+			<input type="number" class="form-control" id="filtro" name="filtro" required></input>
+		</div><!-- form-group -->	
+		</div><!-- col-xs-3 col-md-3 -->				
+		<div class="col-xs-6 col-md-6">
+			<div class="form-group">
 				<button  type="submit" id="btfiltro" value="" class="btn btn-primary btn-lg"><span class="fa fa-search"></span> Buscar
-				</button>
+				</button>			
 				<button  type="submit" id="btlimpiar" value="" class="btn btn-primary btn-lg"><span class="fas fa-broom"></span> Limpiar
 				</button>
-			</div><!-- form-group -->		
-		</div><!-- col-xs-3 col-md-3 -->		
-		
-		<div class="container" id="information" style="display: none">
-			<div class="row">
-			<div class="col-xs-12 col-md-12">
-			<center>
-			 <label for="lbnombre"><h2><strong>Información del paciente</strong></h2></label>	
-	 		</center>
 			</div>
-				<div class="col-xs-3 col-md-3">
+		</div><!-- col-xs-6 col-md-6 -->							
+	  </div><!-- col-xs-12 col-md-12 -->
+	  <div class="card-personalizada" id="cardpersonalizada">		
+		<div class="container" id="information" style="display: none;">	
+			<div class="card-header">
+			  <h2><span class="fas fa-user"></span><strong> Información del paciente</strong></h2>
+			</div>
+			<div class="row">
+				<div class="col-xs-3 col-md-3" style="margin-top: 20px;">
 					<div class="form-group">
+						<input type="hidden" name="idpaciente" id="idpaciente">
 						<label for="lbnombre"><strong>Nombre: </strong></label>		
 						<label id="infnombre"></label>					
 					</div> <!-- form-group -->
@@ -166,9 +170,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
 					<div class="form-group">
 						<label for="lbfecnaci"><strong>Fecha naci: </strong></label>		
 						<label id="infecnaci"></label>					
-					</div> <!-- form-group -->		
+					</div> <!-- form-group -->
+					<div class="form-group">
+					 <button type="submit" id="btdescripcion" class="btn btn-info"><span class="far fa-eye"></span> Ver Descripción</button>
+					</div> <!-- form-group -->			
 				</div>	<!-- col-xs-3 col-md-3 -->						
-				<div class="col-xs-3 col-md-3">														
+				<div class="col-xs-3 col-md-3" style="margin-top: 20px;">														
 					<div class="form-group">
 						<label for="lbapellidos"><strong>Apellidos: </strong></label>		
 						<label id="infapellidos"></label>					
@@ -190,9 +197,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
 						<label id="infeccontrol"></label>					
 					</div> <!-- form-group -->								
 				</div> <!-- col-xs-3 col-md-3 -->
-				<div class="col-xs-3 col-md-3">
+				<div class="col-xs-3 col-md-3" style="margin-top: 20px;">
 					<div class="form-group">
-						<label for="lbcedula"><strong>Cedula: </strong></label>		
+						<label for="lbcedula"><strong>Cédula: </strong></label>		
 						<label id="infcedula"></label>					
 					</div> <!-- form-group -->
 					<div class="form-group">
@@ -206,13 +213,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
 					<div class="form-group">
 						<label for="lbocupa"><strong>Ocupación: </strong></label>		
 						<label id="infocupa"></label>					
-					</div> <!-- form-group -->			
+					</div> <!-- form-group -->
 					<div class="form-group">
-					 <button type="submit" id="btdescripcion" class="btn btn-info"><span class="far fa-eye"></span> Ver Descripción</button>
-					</div> <!-- form-group -->			
-
+					 <button type="submit" id="btdiagnostico" class="btn btn-info"><span class="far fa-eye"></span> Ver Diagnóstico</button>
+					</div> <!-- form-group -->							
 				</div><!-- col-xs-3 col-md-3 --> 
-				<div class="col-xs-3 col-md-3">	
+				<div class="col-xs-3 col-md-3" style="margin-top: 20px;">	
 					<div class="form-group">
 						<label for="lbedad"><strong>Edad: </strong></label>		
 						<label id="infedad"></label>					
@@ -230,7 +236,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
 						<label id="infmedicamento"></label>					
 					</div> <!-- form-group -->	
 					<div class="form-group">
-					 <button type="submit" id="btdiagnostico" class="btn btn-info"><span class="far fa-eye"></span> Ver Diagnóstico</button>
+					 <button type="submit" id="bttratamiento" class="btn btn-info"><span class="far fa-eye"></span> Ver Tratamiento</button>
 					</div> <!-- form-group -->	
 				</div><!-- col-xs-3 col-md-3 -->
 				<div class="col-xs-12 col-md-12" id="textdiagnostico" style="display: none">				
@@ -241,15 +247,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
 					<label for="lbdescripcion"><strong>Descripción</strong></label>
 					<textarea id="txtdescripcion" name="descripcion" rows="4" style="width:100%"></textarea>		
 				</div> <!-- col-xs-12 col-md-12 -->
-				<div class="col-xs-12 col-md-12">
+				<div class="col-xs-12 col-md-12" id="texttratamiento" style="display: none">				
+					<label for="lbtratamiento"><strong>Tratamiento</strong></label>
+					<textarea id="txttratamiento" name="tratamiento" rows="4" style="width:100%"></textarea>		
+				</div> <!-- col-xs-12 col-md-12 -->
+				<div class="col-xs-12 col-md-12" style="margin-top: 50px;">
 					<center>
-						<button  type="submit" id="update" value="update" class="btn btn-primary btn-lg"><span class="fas fa-pencil-alt"> Actualizar
+						<button  type="submit" id="btactualizar" value="" class="btn btn-primary btn-lg"><span class="fas fa-pencil-alt"> Actualizar
 						</button>	
-						<button  type="submit" id="eliminar" value="eliminar" class="btn btn-danger btn-lg"><span class="fas fa-trash"> Eliminar
+						<button  type="submit" id="bteliminar" value="" class="btn btn-danger btn-lg"><span class="fas fa-trash"> Eliminar
 						</button>						
 					</center>
 			    </div> <!-- col-xs-12 col-md-12 -->
-			</div>	 <!-- row --> 					
+			</div>	 <!-- row --> 				
 			</div>    <!-- container--> 
 
 	  </div>  <!-- card-personalizada--> 

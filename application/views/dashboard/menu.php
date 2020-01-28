@@ -3,7 +3,6 @@
 <?php $this->load->view('header/header');?>
 <link rel="stylesheet" type="text/css" href="<?= base_url('assets/css/simple-sidebar.css') ?>">
 <link rel="stylesheet" type="text/css" href="<?= base_url('assets/css/styletable.css') ?>">
-<link rel="stylesheet" type="text/css" href="<?= base_url('assets/css/stylecard.css') ?>">
 <div class="d-flex" id="wrapper">
     <!-- Sidebar -->
     <div class="bg-dark border-right" id="sidebar-wrapper">
