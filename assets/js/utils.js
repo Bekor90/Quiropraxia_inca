@@ -46,23 +46,28 @@ $(document).ready(function(){
 
     $("#btfiltro").click(function(){
 
-      var input_valor = $("#filtro").text('');
+      var input_valor = $("#filtro").val();     
 			$.ajax({			
 				url:'https://quiropraxia.herokuapp.com/buscar/paciente',
         type: 'POST',
-        data: {filtro: input_valor },
+        data: {
+          filtro: input_valor
+        },
 				success:function(data){
-					if(data){           
-            console.log(data);                           
-            $("#information").css({'display': ''});
 
+          var datj= JSON.parse(data);
+
+         	if(!datj){                   
+            alert("El usuario no se ha encontrado!");                   
+					}
+					else{
+
+            $("#information").css({'display': ''});
             $("#lbfiltro").css({'display': 'none'});
             $("#filtro").css({'display': 'none'});
             $("#btfiltro").css({'display': 'none'});
-            $("#btlimpiar").css({'display': 'none'});
-
-            var datj= JSON.parse(data);
-            
+            $("#btlimpiar").css({'display': 'none'});          
+  
             $("#infnombre").text(datj[0]['nombre']);
             $("#infapellidos").text(datj[0]['apellidos']);
             $("#infcedula").text(datj[0]['cedula']);
@@ -82,14 +87,13 @@ $(document).ready(function(){
             $("#infecnaci").text(datj[0]['fecha_nac']);
             $("#infeccontrol").text(datj[0]['fecha_control']); 
             $("#txtdiagnostico").text(datj[0]['diagnostico']);
-            $("#txtdescripcion").text(datj[0]['descripcion']);           
-           
+            $("#txtdescripcion").text(datj[0]['descripcion']);
+            $("#filtro").val('');                
+
 					}
-					else{
-            console.log(data);
-						alert("El usuario no se ha encontrado!");
-					}
-				}
+				},error: function() {
+          console.log("Por favor verifique los datos de búsqueda");
+        }
 			});
     });
 
@@ -123,9 +127,7 @@ $(document).ready(function(){
     
     });
 
-    
-
-
+  
 });
 
 

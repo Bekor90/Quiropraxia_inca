@@ -35,6 +35,7 @@ class Pacientes_controller extends CI_Controller {
 			$this->load->view('dashboard/cierredashboard');
         }else{
 			$buscarform =$this->input->post("filtro");
+
 			$result = $this->Tbl_paciente_Model->findByCedulaPaciente($buscarform);
 	
 				if($result){
