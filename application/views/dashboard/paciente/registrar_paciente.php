@@ -11,6 +11,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
 	 <span class="fas fa-user-plus"></span>  Registrar</button>
      <button class="btn btn-primary" data-toggle="collapse" href="#Collapseconsultar" role="button" aria-expanded="false" aria-controls="consultar" id="consultar">
 	 <span class="fas fa-book-open"></span>  Consultar</button>
+	 <button class="btn btn-primary" data-toggle="collapse" href="#Collapsetodos" role="button" aria-expanded="false" aria-controls="consultar" id="consultar">
+	 <span class="fas fa-book-open"></span> Listar todos</button>
      <style> #Collapseregistrar {margin: 10px; }</style>
   	<div class="collapse" id="Collapseregistrar">
   	<div class="card-personalizada">
@@ -265,5 +267,53 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
 	  </div>  <!-- card-personalizada--> 
 	</div>   <!-- collapse--> 
 
+	<div class="collapse" id="Collapsetodos">
+	  <div class="card-personalizada">
+	  	<?php $result = getPacientes();?>
+		  <?php if($result): ?>   <!-- validando consulta -->			
+	  </br></br>			
+	  <div class="table-responsive">			
+		    <table class="table table-bordered table-striped">	 <!-- mostrar tabla con resultados-->			
+		    	<thead>				
+					<th class="info">Id</th>		 		
+					<th class="info">Nombre</th>				
+					<th class="info">Apellidos</th>					
+					<th class="info">Edad</th>							
+					<th class="info">Genero</th>								
+					<th class="info">EPS</th>										
+					<th class="info">Peso</th>						
+					<th class="info">Estatura</th>						
+					<th class="info">Diagnóstico</th>								
+					<th class="info">Medicamento</th>											
+					<th class="info">Editar</th>												
+					<th class="info">Eliminar</th>							
+				</thead>								
+				<tbody>										
+					<?php foreach($result as $row): ?>						
+					<tr>						<div class="form-group">
+						<td><?php echo $row->id_paciente ?></td>								
+						<td><?php echo $row->nombre ?></td>											
+						<td><?php echo $row->apellidos ?></td>										
+						<td><?php echo $row->edad ?></td>					
+						<td><?php echo $row->genero ?></td>									
+						<td><?php echo $row->eps ?></td>										
+						<td><?php echo $row->peso ?></td>						
+						<td><?php echo $row->estatura ?></td>										
+						<td><?php echo $row->diagnostico ?></td>																
+						<td><?php echo $row->medicamento ?></td>						
+						<td>							
+						  <a class="btn-outline-primary" href="<?php echo base_url().'editar/paciente/'.$row->id_paciente?>"><i class="fa fa-pencil-square-o"></i></a>							
+						</td>						
+						<td>						
+						 <a class="btn-outline-danger" href="<?php echo base_url().'eliminar/paciente/'.$row->id_paciente?>"><i class=" fa fa-trash"></i></a>	
+						</td>										
+					</tr>						
+					<?php endforeach; ?>						
+				</tbody>		
+			</table>					
+		</div>	
+		<?php endif; ?> 
+		</div>  <!-- card-personalizada listar todos--> 
+	</div>   <!-- collapse   listar todos--> 
 	
 </div>     <!-- /#page-content-wrapper -->

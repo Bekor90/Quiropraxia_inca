@@ -1,7 +1,7 @@
 $(document).ready(function(){
   var isEnable = false;
   var isActiveDiag = false;
-  var baseUrl = "https://quiropraxia.herokuapp.com/";
+  var baseUrl = "http://localhost/Quiropraxia_inca/";
     $("#menu-toggle").click(function(e) {
       e.preventDefault();
       $("#wrapper").toggleClass("toggled");      
