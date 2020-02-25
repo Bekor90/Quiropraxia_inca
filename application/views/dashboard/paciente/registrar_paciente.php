@@ -11,7 +11,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
 	 <span class="fas fa-user-plus"></span>  Registrar</button>
      <button class="btn btn-primary" data-toggle="collapse" href="#Collapseconsultar" role="button" aria-expanded="false" aria-controls="consultar" id="consultar">
 	 <span class="fas fa-book-open"></span>  Consultar</button>
-	 <button class="btn btn-primary" data-toggle="collapse" href="#Collapsetodos" role="button" aria-expanded="false" aria-controls="consultar" id="consultar">
+	 <button class="btn btn-primary" data-toggle="collapse" href="#Collapsetodos" role="button" aria-expanded="false" aria-controls="consultar" id="todos">
 	 <span class="fas fa-book-open"></span> Listar todos</button>
      <style> #Collapseregistrar {margin: 10px; }</style>
   	<div class="collapse" id="Collapseregistrar">

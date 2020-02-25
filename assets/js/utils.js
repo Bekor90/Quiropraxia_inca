@@ -11,9 +11,11 @@ $(document).ready(function(){
       if(isEnable){
         isEnable = false;
         $("#consultar").removeAttr('disabled');
+        $("#todos").removeAttr('disabled');
       }else{
         isEnable = true;
         $("#consultar").attr('disabled','disabled');
+        $("#todos").attr('disabled','disabled');
 	$("#alert").hide();	      
       }
     });
@@ -24,6 +26,7 @@ $(document).ready(function(){
         isEnable = false;
     //    $("#cardpersonalizada").removeClass('background-form');
         $("#registrar").removeAttr('disabled');
+        $("#todos").removeAttr('disabled');
         $("#lbfiltro").css({'display': ''});
         $("#filtro").css({'display': ''});
         $("#btfiltro").css({'display': ''});
@@ -34,6 +37,24 @@ $(document).ready(function(){
       }else{
         isEnable = true;
         $("#registrar").attr('disabled','disabled');
+        $("#todos").attr('disabled','disabled');
+	      $("#alert").hide();
+      }
+    });
+
+
+    $("#todos").click(function(e) {
+      e.preventDefault();
+      if(isEnable){
+        isEnable = false;
+    //    $("#cardpersonalizada").removeClass('background-form');
+        $("#registrar").removeAttr('disabled');
+        $("#consultar").removeAttr('disabled');       
+
+      }else{
+        isEnable = true;
+        $("#registrar").attr('disabled','disabled');
+        $("#consultar").attr('disabled','disabled');
 	      $("#alert").hide();
       }
     });
