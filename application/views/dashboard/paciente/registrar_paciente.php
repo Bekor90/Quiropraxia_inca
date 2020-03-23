@@ -275,32 +275,58 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
 	  <div class="table-responsive">			
 		    <table class="table table-bordered table-striped">	 <!-- mostrar tabla con resultados-->			
 		    	<thead>				
-					<th class="info">Id</th>		 		
+					<th class="info">Id</th>
+					<th class="info">Cédula</th>		 		
 					<th class="info">Nombre</th>				
 					<th class="info">Apellidos</th>					
 					<th class="info">Edad</th>							
-					<th class="info">Genero</th>								
-					<th class="info">EPS</th>										
+					<th class="info">Genero</th>
 					<th class="info">Peso</th>						
-					<th class="info">Estatura</th>						
+					<th class="info">Estatura</th>
 					<th class="info">Diagnóstico</th>								
-					<th class="info">Medicamento</th>											
+					<th class="info">Medicamento</th>
+					<th class="info">Tratamiento</th>								
+					<th class="info">EPS</th>
+					<th class="info">Ocupación</th>	
+					<th class="info">Escolaridad</th>	
+					<th class="info">Ciudad</th>
+					<th class="info">Municipio</th>	
+					<th class="info">Barrio</th>	
+					<th class="info">Direccion</th>	
+					<th class="info">Telefono</th>				
+					<th class="info">Fecha_nac</th>			
+					<th class="info">Fecha_reg</th>	
+					<th class="info">Fecha_control</th>	
+					<th class="info">Descripcion</th>																
 					<th class="info">Editar</th>												
 					<th class="info">Eliminar</th>							
 				</thead>								
 				<tbody>										
 					<?php foreach($result as $row): ?>						
 					<tr>						<div class="form-group">
-						<td><?php echo $row->id_paciente ?></td>								
+						<td><?php echo $row->id_paciente ?></td>
+						<td><?php echo $row->cedula ?></td>								
 						<td><?php echo $row->nombre ?></td>											
 						<td><?php echo $row->apellidos ?></td>										
 						<td><?php echo $row->edad ?></td>					
-						<td><?php echo $row->genero ?></td>									
-						<td><?php echo $row->eps ?></td>										
+						<td><?php echo $row->genero ?></td>
 						<td><?php echo $row->peso ?></td>						
-						<td><?php echo $row->estatura ?></td>										
-						<td><?php echo $row->diagnostico ?></td>																
-						<td><?php echo $row->medicamento ?></td>						
+						<td><?php echo $row->estatura ?></td>
+						<td><?php echo $row->diagnostico ?></td>
+						<td><?php echo $row->medicamento ?></td>
+						<td><?php echo $row->tratamiento ?></td>									
+						<td><?php echo $row->eps ?></td>
+						<td><?php echo $row->ocupacion ?></td>
+						<td><?php echo $row->escolaridad ?></td>										
+						<td><?php echo $row->ciudad ?></td>	
+						<td><?php echo $row->municipio ?></td>
+						<td><?php echo $row->barrio ?></td>
+						<td><?php echo $row->direccion ?></td>
+						<td><?php echo $row->telefono ?></td>
+						<td><?php echo $row->fecha_nac ?></td>
+						<td><?php echo $row->fecha_reg ?></td>
+						<td><?php echo $row->fecha_control ?></td>
+						<td><?php echo $row->descripcion ?></td>
 						<td>							
 						  <a class="btn-outline-primary" href="<?php echo base_url().'editar/paciente/'.$row->id_paciente?>"><i class="fa fa-pencil-square-o"></i></a>							
 						</td>						
