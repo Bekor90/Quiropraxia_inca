@@ -109,13 +109,24 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
 					</div><!-- form-group -->
 					<div class="form-group">
 						<label for="lbdiagnostico">Diagnóstico </label>
-						<textarea id="diagnostico" name="diagnostico" rows="4"></textarea>
+						<textarea id="diagnostico" name="diagnostico" rows="3"></textarea>
 					</div><!-- form-group -->
 					<div class="form-group">
 						<label for="lbdtratamiento">Tratamiento </label>
-						<textarea id="tratamiento" name="tratamiento" rows="4"></textarea>
-					</div><!-- form-group -->					
-				</div><!-- col-xs-3 col-md-3 -->
+						<textarea id="tratamiento" name="tratamiento" rows="3"></textarea>
+					</div><!-- form-group -->									
+					<div class="form-group">	
+							<label for="lbenfermeac">Enfermedad actual</label>
+							<div class="controls">										
+							<select  class="form-control" name="enfermedad_actual">					
+									<option value="Hipertenso">Hipertenso</option>						  
+									<option value="Tiroide">Tiroide</option>
+									<option value="Diabetes">Diabetes</option>
+									<option value="Ninguna">Ninguna</option>
+								</select>
+							</div>
+						</div> <!--form-group -->
+			</div><!-- col-xs-3 col-md-3 -->
 				<div class="col-xs-12 col-md-12">
 					<center>
 						<button  type="submit" id="registrar" value="registrar" class="btn btn-primary btn-lg"><span class="fas fa-save"></span> Guardar
@@ -217,6 +228,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
 						<label id="infocupa"></label>					
 					</div> <!-- form-group -->
 					<div class="form-group">
+						<label for="lbenfermeac"><strong>Enfermedad actual: </strong></label>		
+						<label id="infoenfermeac"></label>					
+					</div> <!-- form-group -->
+					<div class="form-group">
 					 <button type="submit" id="btdiagnostico" class="btn btn-info"><span class="far fa-eye"></span> Ver Diagnóstico</button>
 					</div> <!-- form-group -->							
 				</div><!-- col-xs-3 col-md-3 --> 
@@ -253,6 +268,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
 					<label for="lbtratamiento"><strong>Tratamiento</strong></label>
 					<textarea id="txttratamiento" name="tratamiento" rows="4" style="width:100%"></textarea>		
 				</div> <!-- col-xs-12 col-md-12 -->
+				
+
 				<div class="col-xs-12 col-md-12" style="margin-top: 50px;">
 					<center>
 						<button  type="submit" id="btactualizar" value="" class="btn btn-primary btn-lg"><span class="fas fa-pencil-alt"> Actualizar
@@ -297,13 +314,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
 					<th class="info">Fecha_nac</th>			
 					<th class="info">Fecha_reg</th>	
 					<th class="info">Fecha_control</th>	
-					<th class="info">Descripcion</th>																
+					<th class="info">Descripcion</th>
+					<th class="info">Enfermedad actual</th>																
 					<th class="info">Editar</th>												
 					<th class="info">Eliminar</th>							
 				</thead>								
 				<tbody>										
 					<?php foreach($result as $row): ?>						
-					<tr>						<div class="form-group">
+					<tr>
+					<div class="form-group">
 						<td><?php echo $row->id_paciente ?></td>
 						<td><?php echo $row->cedula ?></td>								
 						<td><?php echo $row->nombre ?></td>											
@@ -327,6 +346,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
 						<td><?php echo $row->fecha_reg ?></td>
 						<td><?php echo $row->fecha_control ?></td>
 						<td><?php echo $row->descripcion ?></td>
+						<td><?php echo $row->enfermedad_actual ?></td>
 						<td>							
 						  <a class="btn-outline-primary" href="<?php echo base_url().'editar/paciente/'.$row->id_paciente?>"><i class="fa fa-pencil-square-o"></i></a>							
 						</td>						

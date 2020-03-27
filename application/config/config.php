@@ -22,7 +22,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | If you need to allow multiple domains, remember that this file is still
 | a PHP script and you can easily do that on your own.
    https://quiropraxia.herokuapp.com/   heroku 
-   http://localhost/Quiropraxia_inca/   local
+   http://localhost/Quiropraxia_inca/Quiropraxia_inca/   local
 */
 $config['base_url'] = 'https://quiropraxia.herokuapp.com/';
 

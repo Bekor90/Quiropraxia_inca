@@ -12,16 +12,13 @@
         <a href="<?=base_url(); ?>Dashboard/paciente" class="list-group-item list-group-item-action bg-dark text-white">Pacientes</a>
          <!-- <a href="<?=base_url(); ?>Dashboard/categorias" class="list-group-item list-group-item-action bg-dark text-white">Categorias</a>-->
         <a href="<?=base_url(); ?>Dashboard/salir" class="list-group-item list-group-item-action bg-dark text-white">Salir</a> 
+        <img src="<?=base_url(); ?>assets/img/marca.png">
+
       </div>
     </div>
     <!-- /#sidebar-wrapper -->
 
     <!-- Page Content -->
-    <div id="page-content-wrapper">
-     <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" id="menu-toggle">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-      </nav>
-	    <h3> <?php echo $nombre; ?> </h3>
+      <div id="page-content-wrapper">
+         <h3><strong> <?php echo $nombre; ?> </strong></h3>
 

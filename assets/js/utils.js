@@ -77,7 +77,7 @@ $(document).ready(function(){
           filtro: input_valor
         },
 				success:function(data){        
-        // console.log(data) ;
+         console.log(data) ;
           var datj= JSON.parse(data);
 
          	if(!datj){                   
@@ -99,6 +99,7 @@ $(document).ready(function(){
             $("#infgenero").text(datj[0]['genero']);
             $("#infeps").text(datj[0]['eps']);
             $("#infocupa").text(datj[0]['ocupacion']);
+            $("#infoenfermeac").text(datj[0]['enfermedad_actual']);
             $("#infescolaridad").text(datj[0]['escolaridad']);
             $("#infciudad").text(datj[0]['ciudad']);
             $("#infmunicipio").text(datj[0]['municipio']);
