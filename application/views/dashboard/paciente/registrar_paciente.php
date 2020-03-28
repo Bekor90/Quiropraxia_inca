@@ -116,16 +116,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');?>
 						<textarea id="tratamiento" name="tratamiento" rows="3"></textarea>
 					</div><!-- form-group -->									
 					<div class="form-group">	
-							<label for="lbenfermeac">Enfermedad actual</label>
-							<div class="controls">										
-							<select  class="form-control" name="enfermedad_actual">					
-									<option value="Hipertenso">Hipertenso</option>						  
-									<option value="Tiroide">Tiroide</option>
-									<option value="Diabetes">Diabetes</option>
-									<option value="Ninguna">Ninguna</option>
-								</select>
-							</div>
-						</div> <!--form-group -->
+						<label for="lbenfermeac">Enfermedad actual</label>
+						<div class="controls">										
+						<select  class="form-control" name="enfermedad_actual">					
+								<option value="Hipertenso">Hipertenso</option>						  
+								<option value="Tiroide">Tiroide</option>
+								<option value="Diabetes">Diabetes</option>
+								<option value="Ninguna">Ninguna</option>
+							</select>
+						</div>
+					</div> <!--form-group -->
 			</div><!-- col-xs-3 col-md-3 -->
 				<div class="col-xs-12 col-md-12">
 					<center>

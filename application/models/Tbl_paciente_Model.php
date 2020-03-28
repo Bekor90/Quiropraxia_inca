@@ -38,7 +38,7 @@ class Tbl_paciente_Model extends CI_model {
 			'fecha_control' => $fecha_control,
 			'cedula' => $cedula,
 			'tratamiento' => $tratamiento,
-			'enfermadad_actual' => $enfermedad_actual
+			'enfermedad_actual' => $enfermedad_actual
 			);
 
 		$this->db->insert('paciente', $datos);			

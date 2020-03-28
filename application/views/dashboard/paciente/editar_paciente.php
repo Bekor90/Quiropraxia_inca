@@ -103,12 +103,23 @@
 					</div><!-- form-group -->
 					<div class="form-group">
 						<label for="lbdiagnostico">Diagnóstico </label>
-						<textarea id="diagnostico" name="diagnostico" rows="4"><?php echo $row->diagnostico;?></textarea>
+						<textarea id="diagnostico" name="diagnostico" rows="3"><?php echo $row->diagnostico;?></textarea>
 					</div><!-- form-group -->
 					<div class="form-group">
 						<label for="lbdtratamiento">Tratamiento </label>
-						<textarea id="tratamiento" name="tratamiento" rows="4"><?php echo $row->tratamiento;?></textarea>
+						<textarea id="tratamiento" name="tratamiento" rows="3"><?php echo $row->tratamiento;?></textarea>
 					</div><!-- form-group -->
+					<div class="form-group">	
+						<label for="lbenfermeac">Enfermedad actual</label>
+						<div class="controls">										
+						<select  class="form-control" name="enfermedad_actual">					
+								<option value="Hipertenso">Hipertenso</option>						  
+								<option value="Tiroide">Tiroide</option>
+								<option value="Diabetes">Diabetes</option>
+								<option value="Ninguna">Ninguna</option>
+							</select>
+						</div>
+					</div> <!--form-group -->
 				</div> <!-- col-xs-3 col-md-3 -->
 				<?php endforeach; ?>
 			<div class="col-xs-12 col-md-12">
