@@ -24,7 +24,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
    https://quiropraxia.herokuapp.com/   heroku 
    http://localhost/Quiropraxia_inca/Quiropraxia_inca/   local
 */
-$config['base_url'] = 'http://localhost/Quiropraxia_inca/Quiropraxia_inca/';
+$config['base_url'] = 'https://quiropraxia.herokuapp.com/';
 
 /*
 |--------------------------------------------------------------------------
