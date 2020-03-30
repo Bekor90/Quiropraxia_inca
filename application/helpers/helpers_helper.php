@@ -19,22 +19,5 @@ function getPacientes()
 	return $query->result();
 }
 
-function getTareas()
-{
-	$ci =& get_instance();
-	$id = $ci->session->userdata("user_id");
-	$ci->load->model('Tbl_tarea_Model');
-	if($id > 0){
-
-		 $query= $ci->Tbl_tarea_Model->findTareasUsuario($id);		 
-		 if($query){	
-		 	return $query;
-		 }else{
-		 	return false;
-		 }
-	}
-	return false;
-}
-
 
 ?>

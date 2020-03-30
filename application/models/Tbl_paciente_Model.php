@@ -3,11 +3,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Tbl_paciente_Model extends CI_model {
 
-	/* function autores()
-	{
-		$query = $this->db->query("SELECT apellido FROM autores");
-		return $query->result();
-	}*/
 
 	function savePaciente($nombre, $apellidos, $edad, $genero, $eps, $ocupacion, $escolaridad,
 						  $ciudad, $municipio, $barrio, $direccion, $telefono, $peso,
@@ -41,7 +36,7 @@ class Tbl_paciente_Model extends CI_model {
 			'enfermedad_actual' => $enfermedad_actual
 			);
 
-		$this->db->insert('paciente', $datos);			
+			$this->db->insert('paciente', $datos);					
 	}
 
 	function updatePaciente($data, $idPaciente)
@@ -68,26 +63,23 @@ class Tbl_paciente_Model extends CI_model {
 		return $pacientes->result();
 	}
 
-	/*function findTareasUsuario($idUsuario)
+	function findPacienteBy($cedula)
 	{
+		$this->db->select('cedula');
+		$this->db->from('paciente');
+		$this->db->where('cedula', $cedula);
 
-		$this->db->select('id_tarea, titulo, tarea.descripcion, tarea.id_usuario, estado, categoria.nombre');
-		$this->db->from('tarea');
-		$this->db->join('usuarios', 'usuarios.id_usuario = tarea.id_usuario');
-		$this->db->join('categoria', 'categoria.id_categoria = tarea.id_categoriat');
-		$this->db->where('usuarios.id_usuario', $idUsuario);
+		$paciente = $this->db->get();
 
-		$tareas = $this->db->get();
-
-		if ($tareas->num_rows()>0) {
+		if ($paciente->num_rows()>0) {
 			
-			return $tareas->result();
+			return TRUE;
 		}else{
 			return FALSE;
 		}
 	}
 
-	function findTareasCategoria($id_categoria)
+/*	function findTareasCategoria($id_categoria)
 	{
 
 	$this->db->select('id_tarea, titulo, tarea.descripcion, tarea.id_usuario, estado, tarea.id_categoriat');

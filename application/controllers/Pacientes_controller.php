@@ -81,31 +81,46 @@ class Pacientes_controller extends CI_Controller {
 		  $enfermedad_actualform){
 
 		  $fecha_reg = date('Y-m-d');		
-		  $estado = 1;			
+		  $estado = 1;
+		  
+		  $exist = $this->Tbl_paciente_Model->findPacienteBy($cedulaform);
 
-		  $result = $this->Tbl_paciente_Model->savePaciente($nombreform, $apellidosform, $edadform, $generoform,
-		  $epsform, $ocupacionform, $escolaridadform, $ciudadform, $municipioform, $barrioform, $direccionform, 
-		  $telefonoform, $pesoform, $estaturaform, $fecha_nacform, $fecha_reg, $descripcionform, $diagnosticoform,
-		  $medicamentoform, $estado, $fecha_controlform, $cedulaform, $tratamientoform, $enfermedad_actualform);
-			if ($result){
-
+			if($exist){
 				$user['nombre'] = '';
-				$data = array('result' => '', 
-						'error' => true, 
-						'mensaje' => 'Error al registrar el paciente',
-						'class' => 'alert alert-danger');
-				$this->load->view('dashboard/menu', $user);
-				$this->load->view('dashboard/paciente/registrar_paciente', $data);
-				$this->load->view('dashboard/cierredashboard');			
+					$data = array('result' => '', 
+							'error' => true, 
+							'mensaje' => 'Error el paciente existe, verifique los datos',
+							'class' => 'alert alert-danger');
+					$this->load->view('dashboard/menu', $user);
+					$this->load->view('dashboard/paciente/registrar_paciente', $data);
+					$this->load->view('dashboard/cierredashboard');	
+
 			}else{
-				$user['nombre'] = '';
-				$data = array('result' => '', 
-						'error' => true, 
-						'mensaje' => 'Registro almacenado satisfactoriamente',
-						'class' => 'alert alert-success');
-				$this->load->view('dashboard/menu', $user);
-				$this->load->view('dashboard/paciente/registrar_paciente', $data);
-				$this->load->view('dashboard/cierredashboard');
+
+			$result = $this->Tbl_paciente_Model->savePaciente($nombreform, $apellidosform, $edadform, $generoform,
+			$epsform, $ocupacionform, $escolaridadform, $ciudadform, $municipioform, $barrioform, $direccionform, 
+			$telefonoform, $pesoform, $estaturaform, $fecha_nacform, $fecha_reg, $descripcionform, $diagnosticoform,
+			$medicamentoform, $estado, $fecha_controlform, $cedulaform, $tratamientoform, $enfermedad_actualform);
+				if ($result){
+
+					$user['nombre'] = '';
+					$data = array('result' => '', 
+							'error' => true, 
+							'mensaje' => 'Error al registrar el paciente',
+							'class' => 'alert alert-danger');
+					$this->load->view('dashboard/menu', $user);
+					$this->load->view('dashboard/paciente/registrar_paciente', $data);
+					$this->load->view('dashboard/cierredashboard');			
+				}else{
+					$user['nombre'] = '';
+					$data = array('result' => '', 
+							'error' => true, 
+							'mensaje' => 'Registro almacenado satisfactoriamente',
+							'class' => 'alert alert-success');
+					$this->load->view('dashboard/menu', $user);
+					$this->load->view('dashboard/paciente/registrar_paciente', $data);
+					$this->load->view('dashboard/cierredashboard');
+				}
 			}
 		}else{
 			$user['nombre'] = '';
