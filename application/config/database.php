@@ -75,10 +75,10 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'ec2-174-129-231-100.compute-1.amazonaws.com',
-	'username' => 'ggvzeeplbxipim',
-	'password' => 'a44043a6fa3dc9d8845b960104ddb01e7ed7ce2561adb6c46bd749f3813fc54a',
-	'database' => 'd7mnjcg0igictv',
+	'hostname' => 'ec2-34-235-245-167.compute-1.amazonaws.com',
+	'username' => 'uwqcadlastnjbf',
+	'password' => 'e45dc9dbcb360a21537bcd6a51c99a510a3a2f37493405bf1ebaf35ae4803c1a',
+	'database' => 'dampljme4u1b6l',
 	'schema' => 'quiropraxia_inca',
 	'dbdriver' => 'postgre',
 	'dbprefix' => '',
